@@ -2,7 +2,11 @@
 const Koa = require("koa");
 const app = new Koa();
 
-const middlewares = require("./function/middlewares").default;
+function importDefaultFromModule(m) {
+  return m.default || m;
+}
+
+const middlewares = importDefaultFromModule(require("./function/middlewares"));
 
 // response
 
